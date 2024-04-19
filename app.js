@@ -10,8 +10,13 @@ const siteConfig = require('./config/site')
 const indexRouter = require('./routes/index');
 const aboutRouter = require('./routes/about');
 
+const connectDB = require('./database/config/db')
+
 const app = express();
 const PORT = 4000 || process.env.PORT
+
+// database
+connectDB()
 
 // view engine setup
 app.use(expressLayout)
