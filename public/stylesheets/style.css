@@ -819,6 +819,26 @@ video {
 .duration-150{
   transition-duration: 150ms;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #DAD4BB;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #CD664D;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ce4725;
+}
 .hover\:bg-neutral-200:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(229 229 229 / var(--tw-bg-opacity));
