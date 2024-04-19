@@ -5,6 +5,7 @@ const expressLayout = require('express-ejs-layouts')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const siteConfig = require('./config/site')
 
 const indexRouter = require('./routes/index');
 const aboutRouter = require('./routes/about');
@@ -40,7 +41,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { ...siteConfig });
 });
 
 // listener
