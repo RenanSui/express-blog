@@ -1,0 +1,13 @@
+{
+  // =================== CONFIG: EXTENSION SAVE AND RUN ===================
+  "saveAndRun": {
+    "commands": [
+      {
+        "match": ".*",
+        "cmd": "pnpm run tailwind:css",
+        "useShortcut": false,
+        "silent": true
+      }
+    ]
+  },
+}
