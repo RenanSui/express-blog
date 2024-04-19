@@ -3,7 +3,7 @@ const links = {
 }
 
 const siteConfig = {
-  title: 'NodeJS Blog',
+  title: 'Sui Blog',
   description: 'Simple blog created with NodeJS, Express & Mongodb',
   links
 }
