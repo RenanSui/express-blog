@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./views/**/*.ejs'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mplus2: ['"M PLUS 2"', "sans-serif"],
+      }
+    },
   },
   plugins: [
     {
