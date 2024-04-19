@@ -32,7 +32,9 @@
     </main>
 
     <footer>
-      <a href="#" class="text-sm hover:underline">&lt; View Older Posts</a>
+      <% if (locals.hasNextPage) { %>
+        <a href="/?page=<%= nextPage %>" class="text-sm hover:underline">&lt; View Older Posts</a>
+        <% } %>
     </footer>
   </section>
 </div>
