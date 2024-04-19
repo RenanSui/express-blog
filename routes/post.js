@@ -11,7 +11,12 @@ router.get('/:id', async (req, res, next) => {
     const post = await Post.findById({ _id: id })
     if (!post) throw new Error
 
-    res.render('post', { ...siteConfig, post });
+    const newSiteConfig = {
+      ...siteConfig,
+      title: `${post.title} - ${siteConfig.title}`
+    }
+
+    res.render('post', { ...newSiteConfig, post });
   } catch (error) {
     next(createError(404));
   }
