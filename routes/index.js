@@ -29,14 +29,4 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const posts = await Post.find()
-//     console.log({ posts })
-//     res.render('index', { ...siteConfig, posts });
-//   } catch (error) {
-//     next(createError(404));
-//   }
-// });
-
 module.exports = router;
