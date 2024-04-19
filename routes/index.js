@@ -12,12 +12,11 @@ router.get('/', async (req, res, next) => {
       .skip(perPage * page - perPage)
       .limit(perPage)
       .exec()
+    if (!posts) throw new Error
 
     const count = await Post.countDocuments()
     const nextPage = parseInt(page) + 1
     const hasNextPage = nextPage <= Math.ceil(count / perPage)
-
-    console.log({ count, nextPage, hasNextPage })
 
     res.render('index', {
       ...siteConfig,

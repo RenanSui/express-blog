@@ -16,7 +16,7 @@
       <ul class="group/list flex flex-col gap-4">
         <% locals.posts.map(post=> { %>
           <li class="flex justify-between lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-            <a href="/post/<%= post.id %>" class="text-3xl font-extralight">
+            <a href="/post/<%= post._id %>" class="text-3xl font-extralight">
               <%= post.title %>
             </a>
             <span class="text-neutral-500 text-sm">
@@ -28,7 +28,6 @@
           </li>
           <% }) %>
       </ul>
-      <pre class="pt-32"><%= JSON.stringify(posts, null, 2) %></pre>
     </main>
 
     <footer>
