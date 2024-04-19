@@ -712,6 +712,9 @@ video {
 .pt-0{
   padding-top: 0px;
 }
+.pt-32{
+  padding-top: 8rem;
+}
 .pt-6{
   padding-top: 1.5rem;
 }
@@ -880,6 +883,14 @@ video {
 
   .lg\:hidden{
     display: none;
+  }
+
+  .lg\:hover\:\!opacity-100:hover{
+    opacity: 1 !important;
+  }
+
+  .group\/list:hover .lg\:group-hover\/list\:opacity-50{
+    opacity: 0.5;
   }
 }
 @media (min-width: 1280px){

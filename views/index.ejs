@@ -13,15 +13,22 @@
     </header>
 
     <main>
-      <ul class="flex flex-col gap-4">
-        <li class="flex justify-between">
-          <a href="#" class="text-3xl font-extralight">
-            <span>Post Title</span>
-          </a>
-          <span class="text-neutral-500 text-sm">Date</span>
-          <span class="sr-only">aoba</span>
-        </li>
+      <ul class="group/list flex flex-col gap-4">
+        <% locals.posts.map(post=> { %>
+          <li class="flex justify-between lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
+            <a href="/post/<%= post.id %>" class="text-3xl font-extralight">
+              <%= post.title %>
+            </a>
+            <span class="text-neutral-500 text-sm">
+              <%= post.createdAt.toDateString() %>
+            </span>
+            <span class="sr-only">
+              <%= post.title %>
+            </span>
+          </li>
+          <% }) %>
       </ul>
+      <pre class="pt-32"><%= JSON.stringify(posts, null, 2) %></pre>
     </main>
 
     <footer>
