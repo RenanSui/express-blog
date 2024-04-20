@@ -1,0 +1,29 @@
+<div class="max-w-screen-lg mx-auto flex flex-col gap-8 py-8 
+  <%= locals.posts.length===0 ? '' : '' %>">
+  <main>
+    <h1 class="text-3xl font-medium pb-8">Search results</h1>
+
+    <% if (locals.posts.length===0) { %>
+      <section>
+        <h1 class="text-xl pb-8">No Results...</h1>
+        <a href="/" class="underline">Go to home</a>
+      </section>
+      <% } %>
+
+        <ul class="group/list flex flex-col gap-4">
+          <% locals.posts.map(post=> { %>
+            <li class="flex items-center justify-between lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
+              <a href="/post/<%= post._id %>" class="text-2xl font-light">
+                <%= post.title %>
+              </a>
+              <span class="text-neutral-950 text-sm font-light">
+                <%= post.createdAt.toDateString() %>
+              </span>
+              <span class="sr-only">
+                <%= post.title %>
+              </span>
+            </li>
+            <% }) %>
+        </ul>
+  </main>
+</div>

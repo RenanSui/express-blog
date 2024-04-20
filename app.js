@@ -10,6 +10,7 @@ const siteConfig = require('./config/site')
 const indexRouter = require('./routes/index');
 const aboutRouter = require('./routes/about');
 const postRouter = require('./routes/post');
+const searchRouter = require('./routes/search');
 
 const connectDB = require('./database/config/db')
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/post', postRouter);
+app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
