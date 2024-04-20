@@ -1,29 +1,50 @@
-<div class="max-w-screen-lg mx-auto flex flex-col gap-8 py-8 
-  <%= locals.posts.length===0 ? '' : '' %>">
-  <main>
-    <h1 class="text-3xl font-medium pb-8">Search results</h1>
+<div class="max-w-screen-lg mx-auto flex flex-col gap-8 py-8">
+  <header>
+    <h1 class="text-3xl font-medium pb-2">Search results</h1>
 
-    <% if (locals.posts.length===0) { %>
-      <section>
-        <h1 class="text-xl pb-8">No Results...</h1>
-        <a href="/" class="underline">Go to home</a>
-      </section>
+    <% if (locals.posts.length!==0) { %>
+      <p>
+        <%= locals.posts.length %> results for <%= searchInput %>
+      </p>
       <% } %>
 
-        <ul class="group/list flex flex-col gap-4">
-          <% locals.posts.map(post=> { %>
-            <li class="flex items-center justify-between lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-              <a href="/post/<%= post._id %>" class="text-2xl font-light">
-                <%= post.title %>
-              </a>
-              <span class="text-neutral-950 text-sm font-light">
-                <%= post.createdAt.toDateString() %>
-              </span>
-              <span class="sr-only">
-                <%= post.title %>
-              </span>
-            </li>
+        <% if (locals.posts.length===0) { %>
+          <h2 class="text-xl">No Results...</h2>
+          <% } %>
+  </header>
+
+  <main>
+    <ul class="group/list flex flex-col gap-6">
+      <% locals.posts.map((post, index)=> { %>
+        <li class="grid grid-cols-12 group rounded-md py-2 justify-between min-h-[200px]">
+          <div class="flex flex-col col-span-7">
+            <a href="/post/<%= post._id %>" class="capitalize font-medium text-2xl line-clamp-2">
+              <%= post.title %>
+            </a>
+            <a href="/post/<%= post._id %>" class="line-clamp-2 mt-1">
+              <%= post.body %>
+            </a>
+            <span class="text-neutral-950 text-sm font-light mt-auto">
+              <%= post.createdAt.toDateString() %>
+            </span>
+          </div>
+
+          <div class="col-span-1"></div>
+
+          <a href="/post/<%= post._id %>" class="col-span-4 bg-neutral-950/30 rounded-md bg-cover bg-no-repeat"
+            style="background-image: url('https://source.unsplash.com/random/<%= 1280+index %>x<%= 720+index %>');">
+            <span class="sr-only">Dummy Image</span>
+          </a>
+        </li>
+
+        <% if (index !==locals.posts.length - 1) { %>
+          <div class="w-full border-b border-neutral-950/20"></div>
+          <% } %>
             <% }) %>
-        </ul>
+    </ul>
   </main>
+
+  <footer>
+    <a href="/" class="underline">Go to home</a>
+  </footer>
 </div>

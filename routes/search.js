@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
       ]
     })
 
-    res.render("search", { ...siteConfig, posts })
+    res.render("search", { ...siteConfig, searchInput, posts })
   } catch (error) {
     next(createError(404));
   }
