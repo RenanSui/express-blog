@@ -7,13 +7,6 @@ router.post('/', async (req, res, next) => {
   try {
     let searchInput = req.body.searchInput.replace(/[^a-zA-Z0-9]/g, "")
 
-    // const posts = await Post.find({
-    //   $or: [
-    //     { title: { $regex: new RegExp(searchInput, 'i') } },
-    //     { body: { $regex: new RegExp(searchInput, 'i') } }
-    //   ]
-    // })
-
     const posts = searchInput.length === 0 ? [] : await Post.find({
       $or: [
         { title: { $regex: new RegExp(searchInput, 'i') } },
