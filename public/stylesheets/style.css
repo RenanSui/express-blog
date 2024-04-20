@@ -667,6 +667,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+.bg-neutral-800\/5{
+  background-color: rgb(38 38 38 / 0.05);
+}
 .bg-transparent{
   background-color: transparent;
 }
@@ -679,6 +682,9 @@ video {
 }
 .stroke-neutral-950{
   stroke: #0a0a0a;
+}
+.p-2{
+  padding: 0.5rem;
 }
 .p-3{
   padding: 0.75rem;
@@ -784,6 +790,9 @@ video {
 }
 .font-semibold{
   font-weight: 600;
+}
+.capitalize{
+  text-transform: capitalize;
 }
 .leading-loose{
   line-height: 2;

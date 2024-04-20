@@ -15,8 +15,9 @@
     <main>
       <ul class="group/list flex flex-col gap-4">
         <% locals.posts.map(post=> { %>
-          <li class="flex items-center justify-between lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-            <a href="/post/<%= post._id %>" class="text-2xl font-light">
+          <li
+            class="flex bg-neutral-800/5 rounded-md p-2 items-center justify-between lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
+            <a href="/post/<%= post._id %>" class="capitalize text-2xl font-light">
               <%= post.title %>
             </a>
             <span class="text-neutral-950 text-sm font-light">
