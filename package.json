@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "node --watch ./bin/www",
     "start": "node ./bin/www",
-    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
