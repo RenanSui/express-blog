@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const siteConfig = require('../config/site')
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('about', { ...siteConfig });
-});
+  res.render('about', { ...siteConfig })
+})
 
-module.exports = router;
+module.exports = router

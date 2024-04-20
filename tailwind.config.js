@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mplus2: ['"M PLUS 2"', "sans-serif"],
-      }
+        mplus2: ['"M PLUS 2"', 'sans-serif'],
+      },
     },
   },
   plugins: [
@@ -14,4 +14,4 @@ module.exports = {
       autoprefixer: {},
     },
   ],
-};
+}

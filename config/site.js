@@ -5,7 +5,7 @@ const links = {
 const siteConfig = {
   title: 'Sui Blog',
   description: 'Simple blog created with NodeJS, Express & Mongodb',
-  links
+  links,
 }
 
-module.exports = siteConfig;
+module.exports = siteConfig
