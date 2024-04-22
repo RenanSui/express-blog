@@ -3,7 +3,13 @@
   "saveAndRun": {
     "commands": [
       {
-        "match": ".*",
+        "match": ".*.css",
+        "cmd": "pnpm run tailwind:css",
+        "useShortcut": false,
+        "silent": true
+      },
+      {
+        "match": ".*.ejs",
         "cmd": "pnpm run tailwind:css",
         "useShortcut": false,
         "silent": true
