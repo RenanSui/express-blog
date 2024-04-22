@@ -34,7 +34,7 @@ app.use(ErrorHandler)
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`Listening to port: `, process.env.APP_PORT)
-  console.log(`https://localhost:${process.env.APP_PORT}`)
+  console.log(process.env.APP_URL)
 })
 
 export default app

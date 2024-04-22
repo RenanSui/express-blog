@@ -15,6 +15,7 @@ export declare global {
       APP_PORT: number
       MONGODB_URI: string
       STORAGE_PATH: string
+      APP_URL: string
     }
   }
 }
