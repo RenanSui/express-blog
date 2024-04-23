@@ -31,5 +31,9 @@ export const auth = (router: Router): void => {
     authController.logoutUser,
   )
 
-  router.get('/auth/confirmation', authGuard.isAuth, authController.signUp)
+  router.get(
+    '/auth/confirmation',
+    authGuard.isAuth,
+    authController.confirmation,
+  )
 }

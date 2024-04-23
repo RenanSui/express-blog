@@ -49,8 +49,10 @@
               <input
                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 type="text" name="email" id="email" placeholder="reallycoolguy@gmail.com" value="<%= locals.email %>">
-              <% if (locals.emailValid===false) { %>
-                <p class="text-[0.8rem] font-medium text-red-600">Email is invalid.</p>
+              <% if (locals.emailError) { %>
+                <p class="text-[0.8rem] font-medium text-red-600">
+                  <%= locals.emailError %>
+                </p>
                 <% } %>
             </div>
             <div class="space-y-2">
@@ -59,8 +61,10 @@
               <input
                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 type="password" name="password" id="password" placeholder="********">
-              <% if (locals.passwordValid===false) { %>
-                <p class="text-[0.8rem] font-medium text-red-600">Password must be 8-16 characters long.</p>
+              <% if (locals.passwordError) { %>
+                <p class="text-[0.8rem] font-medium text-red-600">
+                  <%= locals.passwordError %>
+                </p>
                 <% } %>
             </div>
             <button
