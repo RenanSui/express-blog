@@ -1,0 +1,31 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const console_1 = __importDefault(require("console"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+require("dotenv/config");
+const express_1 = __importDefault(require("express"));
+const express_ejs_layouts_1 = __importDefault(require("express-ejs-layouts"));
+const http_errors_1 = __importDefault(require("http-errors"));
+const morgan_1 = __importDefault(require("morgan"));
+const path_1 = require("path");
+const process_1 = __importDefault(require("process"));
+const dataSources_1 = require("./dataSources");
+const express_2 = require("./lib/express");
+const routes_1 = require("./routes");
+dataSources_1.mongoose.run();
+const app = (0, express_1.default)();
+app.use(express_ejs_layouts_1.default);
+app.set('layout', './layouts/main');
+app.set('views', (0, path_1.join)(__dirname, './views'));
+app.set('view engine', 'ejs');
+app.use((0, morgan_1.default)('dev'), express_1.default.json({ limit: '10mb' }), express_1.default.urlencoded({ extended: false }), express_1.default.static((0, path_1.join)(__dirname, process_1.default.env.STORAGE_PATH)), (0, cookie_parser_1.default)(), routes_1.router);
+app.use((req, res, next) => next((0, http_errors_1.default)(404)));
+app.use(express_2.ErrorHandler);
+app.listen(process_1.default.env.APP_PORT, () => {
+    console_1.default.log(`Listening to port: `, process_1.default.env.APP_PORT);
+    console_1.default.log(process_1.default.env.APP_URL);
+});
+exports.default = app;

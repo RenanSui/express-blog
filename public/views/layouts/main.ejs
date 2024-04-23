@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= locals.title %>
+  </title>
+  <meta name="description" content="<%= locals.description %>">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body class="bg-white font-mplus2 bg-[url(/images/img-noise-361x370.png)]">
+  <h1 class="sr-only">Blog</h1>
+  <div class="flex flex-col min-h-screen relative">
+    <%- include('../partials/header.ejs') %>
+      <main class="flex-1 relative">
+        <%- body %>
+      </main>
+      <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/tailwind-indicator.ejs') %>
+  </div>
+</body>
+
+</html>

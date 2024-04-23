@@ -34,8 +34,7 @@
     ]
   },
   "include": [
-    "**/*.ts",
-    "**/*.d.ts"
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules"

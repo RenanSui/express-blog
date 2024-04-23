@@ -1,0 +1,25 @@
+<div class="mx-auto max-w-screen-lg p-8 flex h-[100dvh] flex-col justify-center items-center gap-8 pb-8 pt-6 md:py-8">
+  <section role="alert" aria-live="assertive" aria-atomic="true"
+    class="grid place-items-center rounded-xl border border-neutral-200 bg-white text-neutral-950 shadow">
+    <header class="p-6 pt-0 flex min-h-[176px] flex-col items-center justify-center space-y-2.5 text-center">
+      <h1 class="text-2xl font-semibold leading-none tracking-tight">Page not found</h1>
+      <p class="line-clamp-4 text-sm text-neutral-500">The page you are looking for does not exist</p>
+    </header>
+    <footer class="flex items-center p-6 pt-0">
+      <a href="/"
+        class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-neutral-200 text-neutral-950 h-9 px-4 py-2">Go
+        to Home
+        <span class="sr-only">Go to Home</span></a>
+    </footer>
+  </section>
+
+  <div>
+    <h1>
+      <%= message %>
+    </h1>
+    <h2>
+      <%= error.status %>
+    </h2>
+    <pre class="whitespace-pre-wrap"><%= error.stack %></pre>
+  </div>
+</div>

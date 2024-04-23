@@ -1,0 +1,9 @@
+<div class="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-4 mb-4">
+  <% oauthProviders.map(provider=> { %>
+    <button
+      class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border text-black bg-transparent hover:bg-neutral-100 shadow-sm bg-white py-2"
+      disabled="true">
+      <%= provider.name %>
+    </button>
+    <%}) %>
+</div>

@@ -4,9 +4,6 @@ export declare global {
       params: {
         id: string
       }
-      body: {
-        searchInput: string
-      }
     }
   }
 

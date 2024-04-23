@@ -7,3 +7,10 @@ export type Post = {
   createdAt: Date
   updatedAt: Date
 }
+
+export type User = {
+  username: string
+  email: string
+  password: string
+  isAdmin: boolean
+}

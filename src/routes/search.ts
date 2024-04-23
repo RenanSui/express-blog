@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site'
-import { PostModel } from '@/models/post'
+import { PostModel } from '@/models'
 import { Request, Router } from 'express'
 import createHttpError from 'http-errors'
 
