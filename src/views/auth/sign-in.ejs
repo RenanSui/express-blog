@@ -49,8 +49,10 @@
               <input
                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 type="text" name="email" id="email" placeholder="reallycoolguy@gmail.com" value="<%= locals.email %>">
-              <% if (locals.emailValid===false) { %>
-                <p class="text-[0.8rem] font-medium text-red-600">Email is invalid.</p>
+              <% if (locals.emailError) { %>
+                <p class="text-[0.8rem] font-medium text-red-600">
+                  <%= locals.emailError %>
+                </p>
                 <% } %>
             </div>
             <div class="space-y-2">
@@ -59,14 +61,28 @@
               <input
                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 type="password" name="password" id="password" placeholder="********">
-              <% if (locals.passwordValid===false) { %>
-                <p class="text-[0.8rem] font-medium text-red-600">Password must be 8-16 characters long.</p>
+              <% if (locals.emailError) { %>
+                <p class="text-[0.8rem] font-medium text-red-600">
+                  <%= locals.emailError %>
+                </p>
                 <% } %>
             </div>
             <button
               class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border text-white hover:bg-neutral-800 shadow-sm bg-neutral-950 w-full py-2">Sign
               In</button>
           </form>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 py-2">
+          <div class="text-sm text-muted-foreground">
+            <span class="mr-1 hidden sm:inline-block">
+              Don&apos;t have an account?
+            </span>
+            <a aria-label="Sign up" href="/auth/sign-up"
+              class="text-primary underline-offset-4 transition-colors hover:underline">
+              Sign up
+            </a>
+          </div>
         </div>
     </div>
   </div>

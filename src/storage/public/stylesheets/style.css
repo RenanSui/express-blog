@@ -574,6 +574,9 @@ video {
 .mb-4{
   margin-bottom: 1rem;
 }
+.mr-1{
+  margin-right: 0.25rem;
+}
 .mt-1{
   margin-top: 0.25rem;
 }
@@ -678,6 +681,9 @@ video {
 }
 .flex-col{
   flex-direction: column;
+}
+.flex-wrap{
+  flex-wrap: wrap;
 }
 .place-items-center{
   place-items: center;
@@ -973,6 +979,9 @@ video {
 .underline{
   text-decoration-line: underline;
 }
+.underline-offset-4{
+  text-underline-offset: 4px;
+}
 .opacity-50{
   opacity: 0.5;
 }
@@ -1084,6 +1093,10 @@ video {
 
   .sm\:block{
     display: block;
+  }
+
+  .sm\:inline-block{
+    display: inline-block;
   }
 
   .sm\:hidden{
