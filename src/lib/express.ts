@@ -1,5 +1,5 @@
-import { siteConfig } from '@/config/site'
 import { NextFunction, Request, Response } from 'express'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
 type ExpressError = (
   err: Error & { status: number },
@@ -16,5 +16,8 @@ export const ErrorHandler: ExpressError = (err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error', { ...siteConfig })
+  return res.status(StatusCodes.BAD_REQUEST).json({
+    message: ReasonPhrases.BAD_REQUEST,
+    status: StatusCodes.BAD_REQUEST,
+  })
 }

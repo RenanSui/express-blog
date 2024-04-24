@@ -1,13 +1,19 @@
+import { UserModel } from '@/models'
+import { ClientSession, ObjectId } from 'mongoose'
+
 export const userService = {
-  create: ({ email, password }: { email: string; password: string }) => {
-    console.log({ email, password })
-  },
+  create: async (
+    { email, password }: { email: string; password: string },
+    session: ClientSession,
+  ) =>
+    new UserModel({
+      email,
+      password,
+    }).save({ session }),
 
-  login: ({ email, password }: { email: string; password: string }) => {
-    console.log({ email, password })
-  },
+  getById: (userId: ObjectId) => UserModel.findById(userId),
 
-  logout: () => {
-    console.log('Logged out')
-  },
+  getByEmail: (email: string) => UserModel.findOne({ email }),
+
+  isExistByEmail: (email: string) => UserModel.exists({ email }),
 }

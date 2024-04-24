@@ -1,11 +1,8 @@
-import { siteConfig } from '@/config/site'
 import { SignUpPayload } from '@/types/auth'
 import { BodyRequest } from '@/types/request'
 import { NextFunction, Response } from 'express'
-import { join } from 'path'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import ValidatorJS from 'validatorjs'
-
-const authLayout = join(__dirname, '../views/layouts/auth')
 
 const validateRule = {
   email: 'required|email',
@@ -19,12 +16,9 @@ export const authValidation = {
     const validation = new ValidatorJS({ email, password }, validateRule)
 
     validation.fails(() => {
-      res.render('auth/sign-in', {
-        ...siteConfig,
-        email,
-        emailError: validation.errors.first('email'),
-        passwordError: validation.errors.first('password'),
-        layout: authLayout,
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
       })
     })
 
@@ -39,12 +33,9 @@ export const authValidation = {
     const validation = new ValidatorJS({ email, password }, validateRule)
 
     validation.fails(() => {
-      res.render('auth/sign-up', {
-        ...siteConfig,
-        email,
-        emailError: validation.errors.first('email'),
-        passwordError: validation.errors.first('password'),
-        layout: authLayout,
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
       })
     })
 

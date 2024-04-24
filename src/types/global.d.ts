@@ -4,6 +4,7 @@ export declare global {
       params: {
         id: string
       }
+      userData: string | jwt.JwtPayload
     }
   }
 
@@ -13,6 +14,9 @@ export declare global {
       MONGODB_URI: string
       STORAGE_PATH: string
       APP_URL: string
+      JWT_SECRET: string
+      JWT_EXPIRATION: string
+      API_LOG_FILENAME: string
     }
   }
 }
