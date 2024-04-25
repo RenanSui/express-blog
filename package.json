@@ -7,7 +7,7 @@
     "start": "pnpm run rm:public && cross-env NODE_ENV=production ts-node --files -r tsconfig-paths/register ./src",
     "build": "pnpm run rm:public && cross-env NODE_ENV=production tsc && tsc-alias && pnpm run copy:files",
     "rm:public": "pnpm run copy:files && RD /S /Q .\\public\\",
-    "copy:files": "xcopy .env .\\public\\ /H/Y && xcopy .\\src\\views\\ .\\public\\views\\ /E/Y",
+    "copy:files": "xcopy .env .\\public\\ /H/Y",
     "tailwind:css": "postcss ./src/storage/public/stylesheets/tailwind.css -o ./src/storage/public/stylesheets/style.css",
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix ."
