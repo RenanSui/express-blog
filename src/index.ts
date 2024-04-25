@@ -19,9 +19,6 @@ app.use(
   router,
 )
 
-// app.use((req, res, next) => next(createHttpError(404))) // catch 404 and forward to error handler
-// app.use(ErrorHandler)
-
 app.listen(process.env.APP_PORT)
 
 export default app
