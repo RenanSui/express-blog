@@ -1,7 +1,8 @@
-import { User } from '@/types'
+import { IUserMethods, IUserModel, User } from '@/types'
+import { compareSync } from 'bcrypt'
 import { Schema, model } from 'mongoose'
 
-const schema = new Schema<User>(
+const schema = new Schema<User, IUserModel, IUserMethods>(
   {
     username: String,
     email: String,
@@ -13,5 +14,9 @@ const schema = new Schema<User>(
   },
   { timestamps: true },
 )
+
+schema.methods.comparePassword = function (password: string) {
+  return compareSync(password, this.password)
+}
 
 export const UserModel = model('User', schema)
