@@ -68,9 +68,9 @@ dependencies:
   ts-node:
     specifier: ^10.9.2
     version: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
-  validatorjs:
-    specifier: ^3.22.1
-    version: 3.22.1
+  validator:
+    specifier: ^13.11.0
+    version: 13.11.0
 
 devDependencies:
   '@rocketseat/eslint-config':
@@ -106,9 +106,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.12.7
     version: 20.12.7
-  '@types/validatorjs':
-    specifier: ^3.15.5
-    version: 3.15.5
+  '@types/validator':
+    specifier: ^13.11.9
+    version: 13.11.9
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
@@ -485,8 +485,8 @@ packages:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
     dev: true
 
-  /@types/validatorjs@3.15.5:
-    resolution: {integrity: sha512-yb4ADqCqy6EzBMMLJ7mvBzFR/bCtivTPRvuvRwjdM10hpxPSdHybK6SW0ZTLPad5FGPqiZk/g70EIybxmaBAEA==}
+  /@types/validator@13.11.9:
+    resolution: {integrity: sha512-FCTsikRozryfayPuiI46QzH3fnrOoctTjvOYZkho9BTFLCOZ2rgZJHMOVgCOfttjPJcgOx52EpkY0CMfy87MIw==}
     dev: true
 
   /@types/webidl-conversions@7.0.3:
@@ -4152,8 +4152,9 @@ packages:
   /v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
 
-  /validatorjs@3.22.1:
-    resolution: {integrity: sha512-451KiCt/3E8qV/8fOUdO0YkA8zUdQBNVxubg9jvgEB+JAg9IlRKrClzwq2ir2ndj7TWmPYQ7bXFb4BxcyX2iWw==}
+  /validator@13.11.0:
+    resolution: {integrity: sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /vary@1.1.2:
