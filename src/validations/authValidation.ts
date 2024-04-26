@@ -1,4 +1,4 @@
-import { SignInPayload } from '@/types/auth'
+import { SignInPayload, SignUpPayload } from '@/types/auth'
 import { BodyRequest } from '@/types/request'
 import { NextFunction, Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
@@ -44,4 +44,10 @@ export const authValidation = {
       })
     }
   },
+
+  signUp: (
+    req: BodyRequest<SignUpPayload>,
+    res: Response,
+    next: NextFunction,
+  ) => next(),
 }
