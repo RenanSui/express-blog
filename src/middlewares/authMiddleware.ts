@@ -1,4 +1,5 @@
 import { userService } from '@/service/userService'
+import { getAccessTokenFromHeaders } from '@/utils/headers'
 import { jwtVerify } from '@/utils/jwt'
 import { NextFunction, Request, Response } from 'express'
 
@@ -10,13 +11,12 @@ export const authMiddleware = async (
   try {
     Object.assign(req, { context: {} })
 
-    const accessToken = req.headers.cookie
+    console.log({ headers: req.headers })
+    const { accessToken } = getAccessTokenFromHeaders(req.headers)
     console.log({ accessToken })
-    if (!accessToken) {
-      return next()
-    }
+    if (!accessToken) return next()
 
-    const { id } = jwtVerify({ accessToken })
+    const { id } = jwtVerify({ accessToken: '' })
     console.log({ id })
     if (!id) return next()
 
