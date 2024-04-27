@@ -16,7 +16,6 @@ export declare global {
       APP_URL: string
       JWT_SECRET: string
       JWT_EXPIRATION: string
-      API_LOG_FILENAME: string
     }
   }
 }
