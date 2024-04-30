@@ -1,9 +1,9 @@
 import { createHash } from '@/lib/hash'
 import { userService } from '@/service/userService'
 import { SignInPayload, SignUpPayload } from '@/types/auth'
-import { BodyRequest } from '@/types/request'
+import { BodyRequest, ContextRequest, UserRequest } from '@/types/request'
 import { jwtSign } from '@/utils/jwt'
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import { startSession } from 'mongoose'
 
@@ -102,7 +102,22 @@ export const authController = {
     }
   },
 
-  signOut: (req: Request, res: Response) => {
-    res.redirect('/')
+  signOut: async (
+    { context: { user, accessToken } }: ContextRequest<UserRequest>,
+    res: Response,
+  ) => {
+    try {
+      console.log({ user, accessToken })
+
+      return res.status(StatusCodes.OK).json({
+        message: ReasonPhrases.OK,
+        status: StatusCodes.OK,
+      })
+    } catch (error) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
+      })
+    }
   },
 }
