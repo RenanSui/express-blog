@@ -11,17 +11,13 @@ export const authMiddleware = async (
   try {
     Object.assign(req, { context: {} })
 
-    console.log({ headers: req.headers })
     const { accessToken } = getAccessTokenFromHeaders(req.headers)
-    console.log({ accessToken })
     if (!accessToken) return next()
 
     const { id } = jwtVerify({ accessToken: '' })
-    console.log({ id })
     if (!id) return next()
 
     const user = await userService.getById(id)
-    console.log({ user })
     if (!user) return next()
 
     Object.assign(req, {
