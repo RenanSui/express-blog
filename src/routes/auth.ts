@@ -6,22 +6,17 @@ import { Router } from 'express'
 export const auth = (router: Router): void => {
   router.post(
     '/auth/sign-in',
-    authGuard.isAuth,
+    authGuard.isGuest,
     authValidation.signIn,
     authController.signIn,
   )
 
   router.post(
     '/auth/sign-up',
-    authGuard.isAuth,
+    authGuard.isGuest,
     authValidation.signUp,
     authController.signUp,
   )
 
-  router.post(
-    '/auth/sign-out',
-    authGuard.isAuth,
-    // authValidation.signOut,
-    authController.signOut,
-  )
+  router.post('/auth/sign-out', authGuard.isAuth, authController.signOut)
 }
