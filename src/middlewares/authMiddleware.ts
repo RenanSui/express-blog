@@ -14,7 +14,7 @@ export const authMiddleware = async (
     const { accessToken } = getAccessTokenFromHeaders(req.headers)
     if (!accessToken) return next()
 
-    const { id } = jwtVerify({ accessToken: '' })
+    const { id } = jwtVerify({ accessToken })
     if (!id) return next()
 
     const user = await userService.getById(id)
