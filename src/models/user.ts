@@ -4,7 +4,6 @@ import { Schema, model } from 'mongoose'
 
 const schema = new Schema<User, IUserModel, IUserMethods>(
   {
-    username: String,
     email: String,
     password: String,
     isAdmin: {
