@@ -1,12 +1,4 @@
-import { Model, ObjectId } from 'mongoose'
-
-export type Post = {
-  id: ObjectId
-  title: string
-  body: string
-  createdAt: Date
-  updatedAt: Date
-}
+import { Model } from 'mongoose'
 
 export interface IUserMethods {
   comparePassword: (password: string) => boolean
