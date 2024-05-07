@@ -1,4 +1,4 @@
-import { Post } from '@/types'
+import { Post } from '@/types/post'
 import { Schema, model } from 'mongoose'
 
 const schema = new Schema<Post>(
