@@ -1,26 +1,11 @@
 import { createHash } from '@/lib/hash'
 import { userService } from '@/service/userService'
 import { SignInPayload, SignUpPayload } from '@/types/auth'
-import { BodyRequest, ContextRequest, UserRequest } from '@/types/request'
+import { BodyRequest } from '@/types/request'
 import { jwtSign } from '@/utils/jwt'
-import { Response } from 'express'
+import { Request, Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import { startSession } from 'mongoose'
-
-// userService.login({ email: req.body.email, password: req.body.password })
-// res.redirect('/')
-
-// // can only be accessed by server requests
-// // path = where the cookie is valid
-// path: '/',
-// // domain = what domain the cookie is valid on
-// domain: 'localhost',
-// // secure = only send cookie over https
-// secure: false,
-// // sameSite = only send cookie if the request is coming from the same origin
-// sameSite: 'lax', // "strict" | "lax" | "none" (secure must be true)
-// // maxAge = how long the cookie is valid for in milliseconds
-// .setHeader('Access-Control-Allow-Credentials', 'true')
 
 export const authController = {
   signIn: async (
@@ -102,13 +87,8 @@ export const authController = {
     }
   },
 
-  signOut: async (
-    { context: { user, accessToken } }: ContextRequest<UserRequest>,
-    res: Response,
-  ) => {
+  signOut: async (req: Request, res: Response) => {
     try {
-      console.log({ user, accessToken })
-
       return res.status(StatusCodes.OK).json({
         message: ReasonPhrases.OK,
         status: StatusCodes.OK,
