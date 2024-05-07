@@ -14,3 +14,8 @@ export interface UserRequest {
   user: Omit<User, 'id'> & Document
   accessToken: string
 }
+
+export type BodyContextRequest<T, B> = Omit<Request, 'body' | 'context'> & {
+  body: T
+  context: B
+}
