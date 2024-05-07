@@ -1,4 +1,5 @@
 import { PostModel } from '@/models'
+import { CreatePostProps } from '@/types/post'
 import { liveSearchOptions } from '@/utils/blog'
 
 export const blogService = {
@@ -8,4 +9,8 @@ export const blogService = {
 
   getByInput: async (input: string) =>
     await PostModel.find(liveSearchOptions(input)),
+
+  createPost: async (formData: CreatePostProps) => {
+    return await PostModel.create({ ...formData })
+  },
 }
