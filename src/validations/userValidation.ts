@@ -34,6 +34,7 @@ export const userValidation = {
       Object.assign(req.body, {
         name: trimemdName,
         username: trimemdUsername,
+        imageUrl: req.body.imageUrl,
       })
 
       return next()
