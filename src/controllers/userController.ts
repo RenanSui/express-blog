@@ -1,4 +1,6 @@
-import { ContextRequest, UserRequest } from '@/types/request'
+import { userService } from '@/service/userService'
+import { ContextRequest, ICombinedRequest, UserRequest } from '@/types/request'
+import { UpdateProfilePayload } from '@/types/user'
 import { Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
@@ -19,5 +21,28 @@ export const userController = {
       message: ReasonPhrases.OK,
       status: StatusCodes.OK,
     })
+  },
+
+  updateProfile: async (
+    {
+      context: { user },
+      body: { name, username },
+    }: ICombinedRequest<UserRequest, UpdateProfilePayload>,
+    res: Response,
+  ) => {
+    try {
+      await userService.updateProfileByUserId(user.id, { name, username })
+
+      return res.status(StatusCodes.OK).json({
+        data: { name, username },
+        message: ReasonPhrases.OK,
+        status: StatusCodes.OK,
+      })
+    } catch (error) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
+      })
+    }
   },
 }
