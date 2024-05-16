@@ -1,4 +1,4 @@
-import { IUserMethods, IUserModel, User } from '@/types'
+import { User, IUserModel, IUserMethods } from '@/types/user'
 import { compareSync } from 'bcrypt'
 import { Schema, model } from 'mongoose'
 
