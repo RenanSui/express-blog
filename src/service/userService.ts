@@ -1,5 +1,6 @@
-import { UserModel } from '@/models'
+import { generateFromEmail, generateUsername } from 'unique-username-generator'
 import { ClientSession, ObjectId } from 'mongoose'
+import { UserModel } from '@/models'
 
 export const userService = {
   create: async (
@@ -7,6 +8,8 @@ export const userService = {
     session: ClientSession,
   ) =>
     new UserModel({
+      name: generateUsername(),
+      username: generateFromEmail(email, 4),
       email,
       password,
     }).save({ session }),
