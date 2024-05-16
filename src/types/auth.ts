@@ -1,4 +1,4 @@
-import { User } from '.'
+import { User } from './user'
 
 export type SignInPayload = Pick<User, 'email' | 'password'>
 
