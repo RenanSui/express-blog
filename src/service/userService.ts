@@ -1,4 +1,5 @@
 import { UserModel } from '@/models'
+import { UpdateProfilePayload } from '@/types/user'
 import { ClientSession, ObjectId } from 'mongoose'
 import { generateFromEmail, generateUsername } from 'unique-username-generator'
 
@@ -16,10 +17,10 @@ export const userService = {
 
   updateProfileByUserId: (
     userId: ObjectId,
-    { name, username }: { name: string; username: string },
+    formData: UpdateProfilePayload,
     session?: ClientSession,
   ) => {
-    const data = [{ _id: userId }, { name, username }]
+    const data = [{ _id: userId }, { ...formData }]
 
     let params = null
 
