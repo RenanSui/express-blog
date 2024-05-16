@@ -15,4 +15,6 @@ export type User = {
 
 export type IUserModel = Model<User, unknown, IUserMethods>
 
-export type UpdateProfilePayload = Required<Pick<User, 'name' | 'username'>>
+export type UpdateProfilePayload = Required<
+  Pick<User, 'name' | 'username' | 'imageUrl'>
+>
