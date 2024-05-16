@@ -5,8 +5,11 @@ export interface IUserMethods {
 }
 
 export type User = {
+  name: string
   email: string
   password: string
+  username: string
+  imageUrl: string
   isAdmin: boolean
 }
 
