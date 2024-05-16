@@ -26,12 +26,16 @@ export const userController = {
   updateProfile: async (
     {
       context: { user },
-      body: { name, username },
+      body: { name, username, imageUrl },
     }: ICombinedRequest<UserRequest, UpdateProfilePayload>,
     res: Response,
   ) => {
     try {
-      await userService.updateProfileByUserId(user.id, { name, username })
+      await userService.updateProfileByUserId(user.id, {
+        name,
+        username,
+        imageUrl,
+      })
 
       return res.status(StatusCodes.OK).json({
         data: { name, username },
