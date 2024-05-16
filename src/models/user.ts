@@ -4,12 +4,12 @@ import { Schema, model } from 'mongoose'
 
 const schema = new Schema<User, IUserModel, IUserMethods>(
   {
+    name: String,
     email: String,
     password: String,
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
+    username: { type: String, unique: true },
+    imageUrl: { type: String, default: '' },
+    isAdmin: { type: Boolean, default: false },
   },
   { timestamps: true },
 )
