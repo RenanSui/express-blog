@@ -10,7 +10,7 @@ export const postValidation = {
     next: NextFunction,
   ) => {
     try {
-      if (!req.body.title || !req.body.body) {
+      if (!req.body.body) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: ReasonPhrases.BAD_REQUEST,
           status: StatusCodes.BAD_REQUEST,

@@ -3,14 +3,12 @@ import { CreatePostProps } from '@/types/post'
 import { liveSearchOptions } from '@/utils/post'
 
 export const postService = {
-  getAll: async () => PostModel.find(),
+  getAll: () => PostModel.find(),
 
   getById: (id: string) => PostModel.findById({ _id: id }),
 
-  getByInput: async (input: string) =>
-    await PostModel.find(liveSearchOptions(input)),
+  getByInput: (input: string) => PostModel.find(liveSearchOptions(input)),
 
-  createPost: async (formData: CreatePostProps) => {
-    return await PostModel.create({ ...formData })
-  },
+  createPost: (formData: CreatePostProps) =>
+    new PostModel({ ...formData }).save(),
 }

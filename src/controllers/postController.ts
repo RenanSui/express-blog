@@ -58,13 +58,13 @@ export const postController = {
 
   createPost: async (
     {
-      body: { body, title },
+      body: { body },
       context: { user },
     }: BodyContextRequest<CreatePostPayload, UserRequest>,
     res: Response,
   ) => {
     try {
-      await postService.createPost({ body, title, userId: user.id })
+      await postService.createPost({ body, userId: user.id })
 
       return res.status(StatusCodes.OK).json({
         message: ReasonPhrases.OK,

@@ -3,7 +3,6 @@ import { Schema, model } from 'mongoose'
 
 const schema = new Schema<Post>(
   {
-    title: String,
     body: String,
     userId: String,
   },
