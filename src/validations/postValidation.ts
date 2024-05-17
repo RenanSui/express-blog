@@ -3,7 +3,7 @@ import { BodyRequest } from '@/types/request'
 import { NextFunction, Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-export const blogValidation = {
+export const postValidation = {
   createPost: (
     req: BodyRequest<CreatePostPayload>,
     res: Response,

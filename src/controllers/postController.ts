@@ -1,13 +1,13 @@
-import { blogService } from '@/service/blogService'
+import { postService } from '@/service/postService'
 import { CreatePostPayload } from '@/types/post'
 import { BodyContextRequest, UserRequest } from '@/types/request'
 import { Request, Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-export const blogController = {
+export const postController = {
   post: async (req: Request, res: Response) => {
     try {
-      const postData = await blogService.getAll()
+      const postData = await postService.getAll()
 
       return res.status(StatusCodes.OK).json({
         data: [...postData],
@@ -24,7 +24,7 @@ export const blogController = {
 
   postId: async (req: Request, res: Response) => {
     try {
-      const postData = await blogService.getById(req.params.id)
+      const postData = await postService.getById(req.params.id)
 
       return res.status(StatusCodes.OK).json({
         data: postData,
@@ -41,7 +41,7 @@ export const blogController = {
 
   postSearch: async (req: Request, res: Response) => {
     try {
-      const postData = await blogService.getByInput(req.body.searchInput)
+      const postData = await postService.getByInput(req.body.searchInput)
 
       return res.status(StatusCodes.OK).json({
         data: [...postData],
@@ -64,7 +64,7 @@ export const blogController = {
     res: Response,
   ) => {
     try {
-      await blogService.createPost({ body, title, userId: user.id })
+      await postService.createPost({ body, title, userId: user.id })
 
       return res.status(StatusCodes.OK).json({
         message: ReasonPhrases.OK,

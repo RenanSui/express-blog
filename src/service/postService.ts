@@ -1,8 +1,8 @@
 import { PostModel } from '@/models'
 import { CreatePostProps } from '@/types/post'
-import { liveSearchOptions } from '@/utils/blog'
+import { liveSearchOptions } from '@/utils/post'
 
-export const blogService = {
+export const postService = {
   getAll: async () => PostModel.find(),
 
   getById: (id: string) => PostModel.findById({ _id: id }),
