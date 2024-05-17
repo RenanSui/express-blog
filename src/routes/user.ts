@@ -6,6 +6,8 @@ import { Router } from 'express'
 export const user = (router: Router): void => {
   router.get('/me', authGuard.isAuth, userController.me)
 
+  router.post('/user', userController.user)
+
   router.post(
     '/user/update',
     authGuard.isAuth,
