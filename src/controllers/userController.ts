@@ -1,6 +1,10 @@
 import { userService } from '@/service/userService'
 import { ContextRequest, ICombinedRequest, UserRequest } from '@/types/request'
-import { GetUserByIdPayload, UpdateProfilePayload } from '@/types/user'
+import {
+  GetUserByIdPayload,
+  GetUserByUsernamePayload,
+  UpdateProfilePayload,
+} from '@/types/user'
 import { Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
@@ -28,6 +32,28 @@ export const userController = {
     res: Response,
   ) => {
     const result = await userService.getById(id)
+
+    if (!result) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        message: ReasonPhrases.NOT_FOUND,
+        status: StatusCodes.NOT_FOUND,
+      })
+    }
+
+    return res.status(StatusCodes.OK).json({
+      data: { ...result.toJSON() },
+      message: ReasonPhrases.OK,
+      status: StatusCodes.OK,
+    })
+  },
+
+  userByUsername: async (
+    {
+      body: { username },
+    }: ICombinedRequest<UserRequest, GetUserByUsernamePayload>,
+    res: Response,
+  ) => {
+    const result = await userService.getByUsername(username)
 
     if (!result) {
       return res.status(StatusCodes.NOT_FOUND).json({
