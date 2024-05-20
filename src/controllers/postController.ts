@@ -1,6 +1,6 @@
 import { postService } from '@/service/postService'
 import { CreatePostPayload } from '@/types/post'
-import { BodyContextRequest, UserRequest } from '@/types/request'
+import { BodyContextRequest, BodyRequest, UserRequest } from '@/types/request'
 import { Request, Response } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
@@ -22,7 +22,7 @@ export const postController = {
     }
   },
 
-  postId: async (req: Request, res: Response) => {
+  postById: async (req: Request, res: Response) => {
     try {
       const postData = await postService.getById(req.params.id)
 
@@ -39,9 +39,32 @@ export const postController = {
     }
   },
 
-  postSearch: async (req: Request, res: Response) => {
+  postByUserId: async (
+    { body: { userId } }: BodyRequest<{ userId: string }>,
+    res: Response,
+  ) => {
     try {
-      const postData = await postService.getByInput(req.body.searchInput)
+      const postData = await postService.getByUserId(userId)
+
+      return res.status(StatusCodes.OK).json({
+        data: postData,
+        message: ReasonPhrases.OK,
+        status: StatusCodes.OK,
+      })
+    } catch (error) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
+      })
+    }
+  },
+
+  postBySearch: async (
+    { body: { searchInput } }: BodyRequest<{ searchInput: string }>,
+    res: Response,
+  ) => {
+    try {
+      const postData = await postService.getByInput(searchInput)
 
       return res.status(StatusCodes.OK).json({
         data: [...postData],
