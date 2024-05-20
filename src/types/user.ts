@@ -20,3 +20,5 @@ export type UpdateProfilePayload = Required<
 >
 
 export type GetUserByIdPayload = { id: string }
+
+export type GetUserByUsernamePayload = Pick<User, 'username'>
