@@ -7,6 +7,8 @@ export const postService = {
 
   getById: (id: string) => PostModel.findById({ _id: id }),
 
+  getByUserId: (userId: string) => PostModel.find({ userId }),
+
   getByInput: (input: string) => PostModel.find(liveSearchOptions(input)),
 
   createPost: (formData: CreatePostProps) =>
