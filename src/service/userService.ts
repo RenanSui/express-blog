@@ -1,5 +1,5 @@
 import { UserModel } from '@/models'
-import { UpdateProfilePayload } from '@/types/user'
+import { User } from '@/types/user'
 import { ClientSession, ObjectId } from 'mongoose'
 import { generateFromEmail, generateUsername } from 'unique-username-generator'
 
@@ -17,7 +17,25 @@ export const userService = {
 
   updateProfileByUserId: (
     userId: ObjectId,
-    formData: UpdateProfilePayload,
+    formData: Pick<User, 'name' | 'imageUrl'>,
+    session?: ClientSession,
+  ) => {
+    const data = [{ _id: userId }, { ...formData }]
+
+    let params = null
+
+    if (session) {
+      params = [...data, { session }]
+    } else {
+      params = data
+    }
+
+    return UserModel.updateOne(...params)
+  },
+
+  updateUsernameById: (
+    userId: ObjectId,
+    formData: Pick<User, 'username'>,
     session?: ClientSession,
   ) => {
     const data = [{ _id: userId }, { ...formData }]
@@ -37,5 +55,9 @@ export const userService = {
 
   getByEmail: (email: string) => UserModel.findOne({ email }),
 
+  getByUsername: (username: string) => UserModel.findOne({ username }),
+
   isExistByEmail: (email: string) => UserModel.exists({ email }),
+
+  isExistByUsername: (username: string) => UserModel.exists({ username }),
 }
