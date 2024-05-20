@@ -33,7 +33,7 @@ export const userService = {
     return UserModel.updateOne(...params)
   },
 
-  getById: (userId: string) => UserModel.findById(userId),
+  getById: (userId: string | ObjectId) => UserModel.findById(userId),
 
   getByEmail: (email: string) => UserModel.findOne({ email }),
 
