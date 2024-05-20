@@ -6,9 +6,11 @@ import { Router } from 'express'
 export const post = (router: Router): void => {
   router.get('/post', postController.post)
 
-  router.get('/post/id/:id', postController.postId)
+  router.get('/post/id/:id', postController.postById)
 
-  router.post('/post/search', postController.postSearch)
+  router.post('/post/user', postController.postByUserId)
+
+  router.post('/post/search', postController.postBySearch)
 
   router.post(
     '/post/create',
