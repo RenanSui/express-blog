@@ -11,20 +11,14 @@ export const userValidation = {
     next: NextFunction,
   ) => {
     try {
-      if (!req.body.name || !req.body.username) {
+      if (!req.body.name) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: ReasonPhrases.BAD_REQUEST,
           status: StatusCodes.BAD_REQUEST,
         })
       }
 
-      const trimemdName = validator.trim(req.body.name)
-      const trimemdUsername = validator.trim(req.body.username)
-
-      if (
-        !validator.isLength(trimemdName, { min: 2, max: 48 }) ||
-        !validator.isLength(trimemdUsername, { min: 2, max: 48 })
-      ) {
+      if (!validator.isLength(req.body.name, { min: 2, max: 48 })) {
         return res.status(StatusCodes.BAD_REQUEST).json({
           message: ReasonPhrases.BAD_REQUEST,
           status: StatusCodes.BAD_REQUEST,
@@ -32,9 +26,42 @@ export const userValidation = {
       }
 
       Object.assign(req.body, {
-        name: trimemdName,
-        username: trimemdUsername,
+        name: req.body.name,
         imageUrl: req.body.imageUrl,
+      })
+
+      return next()
+    } catch (error) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
+      })
+    }
+  },
+
+  updateUsername: (
+    req: BodyRequest<UpdateProfilePayload>,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      if (!req.body.username) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+          message: ReasonPhrases.BAD_REQUEST,
+          status: StatusCodes.BAD_REQUEST,
+        })
+      }
+      const trimemdUsername = validator.trim(req.body.username)
+
+      if (!validator.isLength(trimemdUsername, { min: 2, max: 48 })) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+          message: ReasonPhrases.BAD_REQUEST,
+          status: StatusCodes.BAD_REQUEST,
+        })
+      }
+
+      Object.assign(req.body, {
+        username: trimemdUsername,
       })
 
       return next()
