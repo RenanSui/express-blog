@@ -8,6 +8,8 @@ export const user = (router: Router): void => {
 
   router.post('/user', userController.user)
 
+  router.post('/user/username', userController.userByUsername)
+
   router.post(
     '/user/update',
     authGuard.isAuth,
