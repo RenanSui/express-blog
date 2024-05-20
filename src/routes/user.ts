@@ -14,4 +14,11 @@ export const user = (router: Router): void => {
     userValidation.updateProfile,
     userController.updateProfile,
   )
+
+  router.post(
+    '/user/update/username',
+    authGuard.isAuth,
+    userValidation.updateUsername,
+    userController.updateUsername,
+  )
 }
