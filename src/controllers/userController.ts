@@ -46,19 +46,52 @@ export const userController = {
   updateProfile: async (
     {
       context: { user },
-      body: { name, username, imageUrl },
+      body: { name, imageUrl },
     }: ICombinedRequest<UserRequest, UpdateProfilePayload>,
     res: Response,
   ) => {
     try {
       await userService.updateProfileByUserId(user.id, {
         name,
-        username,
         imageUrl,
       })
 
       return res.status(StatusCodes.OK).json({
-        data: { name, username },
+        data: { name, imageUrl },
+        message: ReasonPhrases.OK,
+        status: StatusCodes.OK,
+      })
+    } catch (error) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST,
+      })
+    }
+  },
+
+  updateUsername: async (
+    {
+      context: { user },
+      body: { username },
+    }: ICombinedRequest<UserRequest, UpdateProfilePayload>,
+    res: Response,
+  ) => {
+    try {
+      const isUserExist = await userService.isExistByUsername(username)
+
+      if (isUserExist) {
+        return res.status(StatusCodes.CONFLICT).json({
+          message: ReasonPhrases.CONFLICT,
+          status: StatusCodes.CONFLICT,
+        })
+      }
+
+      await userService.updateUsernameById(user.id, {
+        username,
+      })
+
+      return res.status(StatusCodes.OK).json({
+        data: { username },
         message: ReasonPhrases.OK,
         status: StatusCodes.OK,
       })
