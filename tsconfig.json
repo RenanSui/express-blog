@@ -22,7 +22,7 @@
     },
     "baseUrl": "./src",
     "rootDir": "./src",
-    "outDir": "./public",
+    "outDir": "./dir",
     "lib": [
       "ESNext"
     ],
